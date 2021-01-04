@@ -1,3 +1,4 @@
-import RestaurantMaster from './restaurant';
+import Restaurant from './restaurant';
+import Tables from './tables';
 
-export { RestaurantMaster };
+export { Restaurant, Tables };

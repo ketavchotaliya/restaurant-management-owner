@@ -1,43 +1,85 @@
 import { Model, DataTypes } from 'sequelize';
 import sequelize from '../../../utils/dbConfig';
 
-class CityMaster extends Model {
-  public city_id!: number;
-  public city_name!: string;
-  public state_id!: number;
-  public country_id!: number;
-  public is_user_defined!: number;
+class Restaurant extends Model {
+  public restaurant_id!: number;
+  public restaurant_name!: string;
+  public user_id!: number;
+  public address!: string;
+  public phone_number!: string;
+  public open_time_1!: string;
+  public close_time_1!: string;
+  public open_time_2!: string;
+  public close_time_2!: string;
+  public is_restaurant_open!: number;
+  public table_allocation_time!: number;
+  public is_active!: number;
+  public created_at!: Date;
+  public updated_at!: Date;
+  public updated_by!: number;
 }
 
-CityMaster.init(
+Restaurant.init(
   {
-    city_id: {
-      type: DataTypes.BIGINT.UNSIGNED,
+    restaurant_id: {
+      type: DataTypes.BIGINT(),
       autoIncrement: true,
-      primaryKey: true
+      primaryKey: true,
     },
-    city_name: {
+    restaurant_name: {
       type: new DataTypes.STRING(),
-      allowNull: false
+      allowNull: false,
     },
-    state_id: {
-      type: new DataTypes.BIGINT().UNSIGNED,
-      defaultValue: 1
+    user_id: {
+      type: new DataTypes.BIGINT(),
+      allowNull: false,
     },
-    country_id: {
-      type: new DataTypes.BIGINT().UNSIGNED,
-      defaultValue: 1
+    address: {
+      type: new DataTypes.STRING(),
     },
-    is_user_defined: {
+    phone_number: {
+      type: new DataTypes.STRING(),
+    },
+    open_time_1: {
+      type: new DataTypes.STRING(),
+      allowNull: false,
+    },
+    close_time_1: {
+      type: new DataTypes.STRING(),
+      allowNull: false,
+    },
+    open_time_2: {
+      type: new DataTypes.STRING(),
+    },
+    close_time_2: {
+      type: new DataTypes.STRING(),
+    },
+    is_restaurant_open: {
       type: new DataTypes.TINYINT(),
-      defaultValue: 0
-    }
+      allowNull: false,
+    },
+    table_allocation_time: {
+      type: new DataTypes.STRING(),
+      allowNull: false,
+    },
+    is_active: {
+      type: new DataTypes.TINYINT(),
+    },
+    created_at: {
+      type: new DataTypes.DATE(),
+    },
+    updated_at: {
+      type: new DataTypes.DATE(),
+    },
+    updated_by: {
+      type: new DataTypes.BIGINT(),
+    },
   },
   {
     sequelize,
-    tableName: 'city_master',
-    timestamps: false
+    tableName: 'restaurant',
+    timestamps: false,
   }
 );
 
-export default CityMaster;
+export default Restaurant;
