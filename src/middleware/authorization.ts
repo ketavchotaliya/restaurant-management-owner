@@ -18,7 +18,7 @@ class Authorization {
       if (!authorization) {
         createResponse(res, STATUS_CODES.UNPROCESSABLE_ENTITY, 'Authorization Token is required.');
       }
-      const response = await Identity.authorizeUser(authorization);
+      const response = await Identity.createUser(authorization);
       if (!response.active) {
         createResponse(res, STATUS_CODES.UNAUTHORIZED, `Unauthorized access`);
       } else {

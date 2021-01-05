@@ -12,7 +12,7 @@ class Restaurant extends Model {
   public open_time_2!: string;
   public close_time_2!: string;
   public is_restaurant_open!: number;
-  public table_allocation_time!: number;
+  public min_reservation_period!: number;
   public is_active!: number;
   public created_at!: Date;
   public updated_at!: Date;
@@ -58,7 +58,7 @@ Restaurant.init(
       type: new DataTypes.TINYINT(),
       allowNull: false,
     },
-    table_allocation_time: {
+    min_reservation_period: {
       type: new DataTypes.STRING(),
       allowNull: false,
     },

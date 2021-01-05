@@ -10,7 +10,7 @@ declare module Restaurant {
     open_time_2?: string;
     close_time_2?: string;
     is_restaurant_open?: number;
-    table_allocation_time?: number;
+    min_reservation_period?: number;
     is_active?: number;
     created_at?: Date;
     updated_at?: Date;

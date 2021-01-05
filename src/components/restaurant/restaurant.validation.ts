@@ -3,34 +3,55 @@ import { createValidationResponse } from '../../utils/helper';
 import { isBoolean, isEmpty, isJSON, isNumber, isString } from '../../utils/validator';
 
 class RestaurantValidations {
-  list(req: Request, res: Response, next: NextFunction) {
+  addRestaurant(req: Request, res: Response, next: NextFunction) {
     const { authorization } = req.headers;
-    const { search, rowNumber, recordsPerPage, sortOrder, sortBy, showAll } = req.body;
+    const {
+      restaurant_name,
+      phone_number,
+      open_time_1,
+      open_time_2,
+      close_time_1,
+      close_time_2,
+      min_reservation_period,
+    } = req.body;
     const errors: any = {};
 
     if (isEmpty(authorization)) {
       errors.authorization = res.__('VALIDATIONS.COMMON.authorization.required');
     }
 
-    if (!isEmpty(search) && !isJSON(search)) {
-      errors.search = res.__('VALIDATIONS.COMMON.search.json');
+    if (isEmpty(restaurant_name)) {
+      errors.restaurant_name = res.__('RESTAURANT.restaurant_name.required');
     }
-    if (!isEmpty(rowNumber) && !isNumber(rowNumber)) {
-      errors.rowNumber = res.__('VALIDATIONS.COMMON.rowNumber.valid');
-    } else if (!isEmpty(rowNumber) && Number(rowNumber) <= 0) {
-      errors.rowNumber = res.__('VALIDATIONS.COMMON.rowNumber.valid');
+
+    if (!isEmpty(phone_number) && !isNumber(phone_number)) {
+      errors.phone_number = res.__('RESTAURANT.phone_number.number');
     }
-    if (!isEmpty(recordsPerPage) && !isNumber(recordsPerPage)) {
-      errors.recordsPerPage = res.__('VALIDATIONS.COMMON.recordsPerPage.valid');
+
+    if (isEmpty(open_time_1)) {
+      errors.open_time_1 = res.__('RESTAURANT.open_time_1.required');
+    } else if (!isNumber(open_time_1)) {
+      errors.open_time_1 = res.__('RESTAURANT.open_time_1.valid');
     }
-    if (!isEmpty(sortOrder) && !isString(sortOrder)) {
-      errors.sortOrder = res.__('VALIDATIONS.COMMON.sortOrder.valid');
+
+    if (isEmpty(close_time_1)) {
+      errors.close_time_1 = res.__('RESTAURANT.close_time_1.required');
+    } else if (!isNumber(close_time_1)) {
+      errors.close_time_1 = res.__('RESTAURANT.close_time_1.valid');
     }
-    if (!isEmpty(sortBy) && !isString(sortBy)) {
-      errors.sortBy = res.__('VALIDATIONS.COMMON.sortBy.valid');
+
+    if (isEmpty(min_reservation_period)) {
+      errors.min_reservation_period = res.__('RESTAURANT.min_reservation_time.required');
+    } else if (!isNumber(min_reservation_period)) {
+      errors.min_reservation_period = res.__('RESTAURANT.min_reservation_time.number');
     }
-    if (!isEmpty(showAll) && !isBoolean(showAll)) {
-      errors.showAll = res.__('VALIDATIONS.COMMON.showAll.valid');
+
+    if (!isEmpty(open_time_2) && !isNumber(open_time_2)) {
+      errors.close_time_1 = res.__('RESTAURANT.open_time_1.valid');
+    }
+
+    if (!isEmpty(close_time_2) && !isNumber(close_time_2)) {
+      errors.close_time_1 = res.__('RESTAURANT.close_time_1.valid');
     }
 
     if (Object.keys(errors).length > 0) {
