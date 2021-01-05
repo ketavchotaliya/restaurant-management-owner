@@ -2,13 +2,7 @@ import { NextFunction, Request, Response } from 'express';
 import { createValidationResponse } from '../../utils/helper';
 import { isBoolean, isEmpty, isJSON, isNumber, isString } from '../../utils/validator';
 
-class LocationValidations {
-  /**
-   * @description List Location validations
-   * @param req
-   * @param res
-   * @param next
-   */
+class RestaurantValidations {
   list(req: Request, res: Response, next: NextFunction) {
     const { authorization } = req.headers;
     const { search, rowNumber, recordsPerPage, sortOrder, sortBy, showAll } = req.body;
@@ -47,4 +41,4 @@ class LocationValidations {
   }
 }
 
-export default new LocationValidations();
+export default new RestaurantValidations();
