@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import { createValidationResponse } from '../../utils/helper';
-import { isBoolean, isEmpty, isIn, isJSON, isNumber, isString, matches } from '../../utils/validator';
+import { isEmpty, isIn, isNumber } from '../../utils/validator';
 const TIME_VALIDATION_REGEX = /(\d{1,2})\:(\d{1,2})\:(\d{1,2})/;
 
 class RestaurantValidations {
@@ -89,7 +89,7 @@ class RestaurantValidations {
   }
 
   validateRestaurantId(req: Request, res: Response, next: NextFunction) {
-    const { restaurantId } = req.params;
+    let restaurantId = req.params.restaurant_id || req.body.restaurant_id || req.query.restaurant_id;
     const errors: any = {};
 
     if (isEmpty(restaurantId)) {

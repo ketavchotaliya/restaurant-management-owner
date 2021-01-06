@@ -13,7 +13,7 @@ router.post('/', RestaurantValidations.addRestaurant, (req: Request, res: Respon
 
 // Update Restaurant
 router.put(
-  '/:restaurantId',
+  '/:restaurant_id',
   RestaurantValidations.validateRestaurantId,
   RestaurantValidations.addRestaurant,
   RestaurantValidations.updateRestaurant,

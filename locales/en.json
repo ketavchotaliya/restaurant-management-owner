@@ -60,5 +60,19 @@
     "phone_number": {
       "number": "Phone number should be in number format "
     }
+  },
+  "TABLES": {
+    "table_no": {
+      "required": "table number is Required",
+      "number": "table number must be numeric"
+    },
+    "table_size": {
+      "required": "table size is Required",
+      "number": "table size must be numeric"
+    },
+    "tableId": {
+      "required": "table Id is Required",
+      "number": "table Id must be numeric"
+    }
   }
 }

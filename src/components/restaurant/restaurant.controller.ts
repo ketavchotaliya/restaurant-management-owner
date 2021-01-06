@@ -1,4 +1,4 @@
-import STATUS_CODES, { INTERNAL_SERVER_ERROR } from 'http-status-codes';
+import STATUS_CODES from 'http-status-codes';
 import { CustomRequest, CustomResponse, Pager } from '../../environment';
 import { createResponse } from '../../utils/helper';
 import { logger } from '../../utils/logger';
@@ -55,11 +55,11 @@ class RestaurantController {
         is_active,
       } = req.body;
 
-      const { restaurantId } = req.params;
+      const { restaurant_id } = req.params;
 
       await RestaurantModel.updateOne(
         {
-          restaurant_id: restaurantId,
+          restaurant_id,
         },
         {
           restaurant_name,

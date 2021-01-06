@@ -8,9 +8,10 @@ import { RestaurantModel } from './models';
 class RestaurantMiddleware {
   async authorizedRestaurant(req: CustomRequest, res: CustomResponse, next: NextFunction) {
     try {
+      let restaurantId = req.params.restaurant_id || req.body.restaurant_id || req.query.restaurant_id;
       // get Restaurant details
       const restaurantDetails = await RestaurantModel.getSingle({
-        restaurant_id: req.params.restaurantId,
+        restaurant_id: restaurantId,
       });
 
       if (!restaurantDetails) {

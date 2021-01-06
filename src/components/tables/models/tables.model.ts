@@ -66,6 +66,16 @@ class TablesModel {
       throw error;
     }
   }
+
+  async delete(condition: any = {}): Promise<any> {
+    try {
+      return await Tables.destroy({
+        where: condition,
+      });
+    } catch (error) {
+      throw error;
+    }
+  }
 }
 
 export default new TablesModel();
