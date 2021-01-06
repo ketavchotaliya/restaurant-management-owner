@@ -1,42 +1,52 @@
 {
-	"SERVER_ERROR": "Server Error",
-	"VALIDATIONS": {
-		"COMMON": {
-			"authorization": {
-				"required": "Authorization Token is required"
-			},
-			"rowNumber": {
-				"valid": "rowNumber must not be zero."
-			}
-		}
-	},
-	"LOCATION": {
-		"COUNTRY_LIST": "Country List",
-		"STATE_LIST": "State List",
-		"CITY_LIST": "City List"
-	},
-	"RESTAURANT": {
-		"restaurant_name": {
-			"required": "Restaurant Name is Required"
-		},
-		"address": {
-			"required": "Address is Required"
-		},
-		"open_time_1": {
-			"required": "Restaurant Open Time is required",
-			"valid": "Restaurant Open Time should be valid"
-		},
-		"close_time_1": {
-			"required": "Restaurant Close Time is Required",
-			"valid": "Restaurant Close Time should be valid"
-		},
-		"min_reservation_time": {
-			"valid": "Minimum Reservation Time is required",
-			"number": "Minimum Reservation Time should be in number format ",
-			"required": "RESTAURANT.min_reservation_time.required"
-		},
-		"phone_number": {
-			"number": "Phone number should be in number format "
-		}
-	}
+  "SERVER_ERROR": "Server Error",
+  "VALIDATIONS": {
+    "COMMON": {
+      "authorization": {
+        "required": "Authorization Token is required"
+      },
+      "rowNumber": {
+        "valid": "rowNumber must not be zero."
+      }
+    }
+  },
+  "LOCATION": {
+    "COUNTRY_LIST": "Country List",
+    "STATE_LIST": "State List",
+    "CITY_LIST": "City List"
+  },
+  "RESTAURANT": {
+    "restaurant_name": {
+      "required": "Restaurant Name is Required"
+    },
+    "address": {
+      "required": "Address is Required"
+    },
+    "open_time_1": {
+      "required": "Restaurant Open Time is required",
+      "valid": "Restaurant Open Time should be in 24 hours format",
+      "invalid_time": "Open Time format is invalid"
+    },
+    "close_time_1": {
+      "required": "Restaurant Close Time is Required",
+      "valid": "Restaurant Close Time should be in 24 hours format",
+      "invalid_time": "Close Time format is invalid",
+      "less_then_start_time": "Close time must not be less then Start time"
+    },
+    "open_time_2": {
+      "less_then_start_time": "Open time 2 must not be less then Close time"
+    },
+    "close_time_2": {
+      "required": "Close time 2 is required",
+      "less_then_start_time": "Close time 2 must not be less then Open time 2"
+    },
+    "min_reservation_time": {
+      "valid": "Minimum Reservation Time is required",
+      "number": "Minimum Reservation Time should be in number format ",
+      "required": "RESTAURANT.min_reservation_time.required"
+    },
+    "phone_number": {
+      "number": "Phone number should be in number format "
+    }
+  }
 }
