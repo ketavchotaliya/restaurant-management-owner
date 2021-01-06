@@ -19,8 +19,20 @@
     "restaurant_name": {
       "required": "Restaurant Name is Required"
     },
+    "restaurant_id": {
+      "required": "Restaurant Id is Required",
+      "number": "Restaurant Id must be numeric"
+    },
     "address": {
       "required": "Address is Required"
+    },
+    "is_restaurant_open": {
+      "required": "Is Restaurant Open flag is required",
+      "valid": "Is Restaurant Open flag should have a valid value"
+    },
+    "is_active": {
+      "required": "Is Active flag is required",
+      "valid": "Is Active flag should have a valid value"
     },
     "open_time_1": {
       "required": "Restaurant Open Time is required",

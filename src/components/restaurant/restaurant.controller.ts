@@ -39,6 +39,50 @@ class RestaurantController {
       createResponse(res, STATUS_CODES.INTERNAL_SERVER_ERROR, 'Internal Server Error');
     }
   }
+
+  async updateRestaurant(req: CustomRequest, res: CustomResponse) {
+    try {
+      const {
+        restaurant_name,
+        address,
+        phone_number,
+        open_time_1,
+        open_time_2,
+        close_time_1,
+        close_time_2,
+        min_reservation_period,
+        is_restaurant_open,
+        is_active,
+      } = req.body;
+
+      const { restaurantId } = req.params;
+
+      await RestaurantModel.updateOne(
+        {
+          restaurant_id: restaurantId,
+        },
+        {
+          restaurant_name,
+          address,
+          phone_number,
+          open_time_1,
+          close_time_1,
+          open_time_2,
+          close_time_2,
+          is_restaurant_open,
+          min_reservation_period,
+          is_active,
+          updated_at: new Date(),
+          updated_by: Number(req.headers.logged_in_user_id),
+        }
+      );
+
+      createResponse(res, STATUS_CODES.OK, 'Restaurant updated successfully');
+    } catch (e) {
+      logger.error(__filename, '', 'updateRestaurant', 'Internal server Error', e);
+      createResponse(res, STATUS_CODES.INTERNAL_SERVER_ERROR, 'Internal Server Error');
+    }
+  }
 }
 
 export default new RestaurantController();
