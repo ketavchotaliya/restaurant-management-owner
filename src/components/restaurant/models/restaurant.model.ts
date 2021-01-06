@@ -1,4 +1,5 @@
 import { Transaction } from 'sequelize';
+import { Tables } from '../../tables/schemas';
 import { Restaurant } from '../schemas';
 import { Restaurant as RestaurantType } from '../types';
 
@@ -32,6 +33,22 @@ class RestaurantModel {
     try {
       return await Restaurant.findOne({
         where: whereObj,
+      });
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async getDetails(whereObj: any): Promise<any> {
+    try {
+      return await Restaurant.findOne({
+        where: whereObj,
+        include: [
+          {
+            model: Tables,
+            as: 'tables',
+          },
+        ],
       });
     } catch (error) {
       throw error;

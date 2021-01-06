@@ -10,6 +10,11 @@ router.post('/', RestaurantValidations.addRestaurant, (req: Request, res: Respon
   RestaurantController.addRestaurant(req, res);
 });
 
+// Get Restaurant
+router.get('/:restaurant_id', RestaurantValidations.validateRestaurantId, (req: Request, res: Response) => {
+  RestaurantController.getRestaurant(req, res);
+});
+
 // Update Restaurant
 router.put(
   '/:restaurant_id',

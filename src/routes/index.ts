@@ -9,5 +9,6 @@ import TablesRoute from './tables.route';
 export default (app: Application) => {
   // Provider Routes
   app.use('/restaurant', RestaurantRoute);
+  app.use('/private', RestaurantRoute);
   app.use('/restaurant', TablesRoute);
 };
