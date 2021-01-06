@@ -2,7 +2,6 @@ import { Request, Response, Router } from 'express';
 import RestaurantValidations from './restaurant.validation';
 import RestaurantController from './restaurant.controller';
 import restaurantMiddleware from './restaurant.middleware';
-// import Authorization from '../../middleware/authorization';
 
 const router = Router();
 

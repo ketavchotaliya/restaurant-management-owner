@@ -3,7 +3,6 @@ import TablesValidations from './tables.validation';
 import TablesController from './tables.controller';
 import tablesMiddleware from './tables.middleware';
 import restaurantMiddleware from '../restaurant/restaurant.middleware';
-// import Authorization from '../../middleware/authorization';
 
 const router = Router();
 
