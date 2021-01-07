@@ -10,9 +10,9 @@ router.post('/', RestaurantValidations.addRestaurant, (req: Request, res: Respon
   RestaurantController.addRestaurant(req, res);
 });
 
-// Get Restaurant
-router.get('/:restaurant_id', RestaurantValidations.validateRestaurantId, (req: Request, res: Response) => {
-  RestaurantController.getRestaurant(req, res);
+// Private API - Get Restaurant details from Ids
+router.post('/getRestaurantDetailsFromIds', (req: Request, res: Response) => {
+  RestaurantController.getRestaurantsFromIds(req, res);
 });
 
 // Update Restaurant

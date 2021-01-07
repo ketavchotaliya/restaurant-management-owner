@@ -41,7 +41,7 @@ class RestaurantModel {
 
   async getDetails(whereObj: any): Promise<any> {
     try {
-      return await Restaurant.findOne({
+      return await Restaurant.findAll({
         where: whereObj,
         include: [
           {

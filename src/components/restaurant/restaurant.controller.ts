@@ -84,18 +84,11 @@ class RestaurantController {
     }
   }
 
-  async getRestaurant(req: CustomRequest, res: CustomResponse) {
+  async getRestaurantsFromIds(req: CustomRequest, res: CustomResponse) {
     try {
-      const { restaurant_id } = req.params;
-
       const restaurantDetails = await RestaurantModel.getDetails({
-        restaurant_id,
+        restaurant_id: req.body,
       });
-
-      if (!restaurantDetails) {
-        createResponse(res, STATUS_CODES.NOT_FOUND, 'Restaurant not found');
-        return;
-      }
 
       createResponse(res, STATUS_CODES.OK, 'Restaurant found', restaurantDetails);
     } catch (e) {
