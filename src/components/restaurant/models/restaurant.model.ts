@@ -1,17 +1,16 @@
 import { Transaction } from 'sequelize';
-import { CityMaster } from '../schemas';
-import { CityType } from '../types';
+import { Tables } from '../../tables/schemas';
+import { Restaurant } from '../schemas';
+import { Restaurant as RestaurantType } from '../types';
 
-class CityModel {
-  /**
-   * @description Add new city
-   * @param cityObj
-   * @param transaction
-   */
-  async addOne(cityObj: CityType, transaction: Transaction | undefined = undefined): Promise<CityType> {
+class RestaurantModel {
+  async addOne(
+    restaurantObj: RestaurantType,
+    transaction: Transaction | undefined = undefined
+  ): Promise<RestaurantType> {
     try {
-      const insertedObj = await CityMaster.create(cityObj, {
-        transaction: transaction ? transaction : undefined
+      const insertedObj = await Restaurant.create(restaurantObj, {
+        transaction: transaction ? transaction : undefined,
       });
       return insertedObj;
     } catch (error) {
@@ -19,44 +18,52 @@ class CityModel {
     }
   }
 
-  /**
-   * @description Add many city
-   * @param cityArr
-   * @param transaction
-   */
-  async addMany(cityArr: CityType[], transaction: Transaction | undefined = undefined): Promise<CityType[]> {
+  async addMany(
+    restaurantArr: RestaurantType[],
+    transaction: Transaction | undefined = undefined
+  ): Promise<RestaurantType[]> {
     try {
-      return await CityMaster.bulkCreate(cityArr, { transaction: transaction ? transaction : undefined });
+      return await Restaurant.bulkCreate(restaurantArr, { transaction: transaction ? transaction : undefined });
     } catch (error) {
       throw error;
     }
   }
 
-  /**
-   * @description Get city by condition
-   * @param whereObj
-   */
-  async getSingle(whereObj: any): Promise<CityType | null> {
+  async getSingle(whereObj: any): Promise<RestaurantType | null> {
     try {
-      return await CityMaster.findOne({
-        where: whereObj
+      return await Restaurant.findOne({
+        where: whereObj,
       });
     } catch (error) {
       throw error;
     }
   }
 
-  /**
-   * @description Update city by Id
-   * @param cityId
-   * @param cityObj
-   * @param transaction
-   */
-  async updateOne(cityId: number, cityObj: CityType, transaction: Transaction | undefined = undefined): Promise<any> {
+  async getDetails(whereObj: any): Promise<any> {
     try {
-      await CityMaster.update(cityObj, {
-        where: {},
-        transaction: transaction ? transaction : undefined
+      return await Restaurant.findAll({
+        where: whereObj,
+        include: [
+          {
+            model: Tables,
+            as: 'tables',
+          },
+        ],
+      });
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async updateOne(
+    whereObj: {},
+    restaurantObj: RestaurantType,
+    transaction: Transaction | undefined = undefined
+  ): Promise<any> {
+    try {
+      await Restaurant.update(restaurantObj, {
+        where: whereObj,
+        transaction: transaction ? transaction : undefined,
       });
       return;
     } catch (error) {
@@ -64,14 +71,10 @@ class CityModel {
     }
   }
 
-  /**
-   * @description Get total count of city
-   * @param condition
-   */
   async getTotal(condition: any = {}): Promise<number> {
     try {
-      const count: number = await CityMaster.count({
-        where: condition
+      const count: number = await Restaurant.count({
+        where: condition,
       });
       return count;
     } catch (error) {
@@ -79,18 +82,12 @@ class CityModel {
     }
   }
 
-  /**
-   * @description Get city list with zone
-   * @param condition
-   * @param attributes
-   * @param others
-   */
-  async getMany(condition: any = {}, attributes: string[] = [], other: object = {}): Promise<CityType[]> {
+  async getMany(condition: any = {}, attributes: string[] = [], other: object = {}): Promise<RestaurantType[]> {
     try {
-      return await CityMaster.findAll({
+      return await Restaurant.findAll({
         attributes: attributes.length > 0 ? attributes : undefined,
         where: condition,
-        ...other
+        ...other,
       });
     } catch (error) {
       throw error;
@@ -98,4 +95,4 @@ class CityModel {
   }
 }
 
-export default new CityModel();
+export default new RestaurantModel();

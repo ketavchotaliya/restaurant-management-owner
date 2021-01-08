@@ -15,54 +15,64 @@
     "STATE_LIST": "State List",
     "CITY_LIST": "City List"
   },
-  "PUBLIC": {
-    "first_name": {
-      "required": "First Name is Required",
-      "valid": "First Name should be valid"
+  "RESTAURANT": {
+    "restaurant_name": {
+      "required": "Restaurant Name is Required"
     },
-    "last_name": {
-      "required": "Last Name is Required",
-      "valid": "Last Name should be valid"
+    "restaurant_id": {
+      "required": "Restaurant Id is Required",
+      "number": "Restaurant Id must be numeric"
     },
-    "email": {
-      "required": "Email is Required",
-      "valid": "Email should be valid"
+    "address": {
+      "required": "Address is Required"
     },
-    "password": {
-      "required": "Password is required"
+    "is_restaurant_open": {
+      "required": "Is Restaurant Open flag is required",
+      "valid": "Is Restaurant Open flag should have a valid value"
     },
-    "has_accepted_tnc": {
-      "valid": "Terms and Condition should be valid"
+    "is_active": {
+      "required": "Is Active flag is required",
+      "valid": "Is Active flag should have a valid value"
     },
-    "contact_number": {
-      "required": "Contact number is required",
-      "valid": "Contact number should be valid"
+    "open_time_1": {
+      "required": "Restaurant Open Time is required",
+      "valid": "Restaurant Open Time should be in 24 hours format",
+      "invalid_time": "Open Time format is invalid"
     },
-    "otp": {
-      "required": "OTP Required"
+    "close_time_1": {
+      "required": "Restaurant Close Time is Required",
+      "valid": "Restaurant Close Time should be in 24 hours format",
+      "invalid_time": "Close Time format is invalid",
+      "less_then_start_time": "Close time must not be less then Start time"
     },
-    "forgot_password_initiated": "Forgot password code has been sent to your email!",
-    "password_updated": "Password updated."
+    "open_time_2": {
+      "less_then_start_time": "Open time 2 must not be less then Close time"
+    },
+    "close_time_2": {
+      "required": "Close time 2 is required",
+      "less_then_start_time": "Close time 2 must not be less then Open time 2"
+    },
+    "min_reservation_time": {
+      "valid": "Minimum Reservation Time is required",
+      "number": "Minimum Reservation Time should be in number format ",
+      "required": "RESTAURANT.min_reservation_time.required"
+    },
+    "phone_number": {
+      "number": "Phone number should be in number format "
+    }
   },
-  "USER": {
-    "access_forbidden": "Access forbidden!",
-    "otp_send": "OTP Sent.",
-    "user_already_available": "User already exists",
-    "otp_verified": "OTP verified",
-    "otp_expired": "OTP Expired",
-    "login_successful": "Login Successful",
-    "otp_not_matched": "Invalid OTP",
-    "user_not_found": "User not found"
-  },
-  "TIMEZONE": {
-    "LIST": "Timezone list"
-  },
-  "AUTH": {
-    "config_details_available": "Config Details",
-    "password_updated": "Password Changed",
-    "logout_successful": "Logout successfully"
-  },
-  "ADMIN": {
-    "NOT_FOUND": "Admin not found"
+  "TABLES": {
+    "table_no": {
+      "required": "table number is Required",
+      "number": "table number must be numeric"
+    },
+    "table_size": {
+      "required": "table size is Required",
+      "number": "table size must be numeric"
+    },
+    "tableId": {
+      "required": "table Id is Required",
+      "number": "table Id must be numeric"
+    }
   }
 }
